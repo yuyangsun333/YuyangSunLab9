@@ -8,31 +8,32 @@ def encode_password(password):
         encoded += str(new_digit)
     return encoded
 
+
 def main():
+    last_encoded_password = None
     while True:
-        print("\nPassword Encoder/Decoder Menu")
-        print("1. Encode a password")
-        print("2. Decode a password")
-        print("3. Exit")
-        choice = input("Choose an option (1-3): ")
+        print("\nMenu\n-------------")
+        print("1. Encode")
+        print("2. Decode")
+        print("3. Quit")
+        option = input("Please enter an option: ")
 
-        if choice == '1':
-            password = input("Enter an 8-digit password to encode: ")
+        if option == '1':
+            password = input("Please enter your password to encode: ")
             if len(password) == 8 and password.isdigit():
-                encoded = encode_password(password)
-                print("Encoded password:", encoded)
+                last_encoded_password = encode_password(password)
+                print("Your password has been encoded and stored!")
             else:
                 print("Invalid input. Please enter exactly 8 digits.")
 
-        elif choice == '2':
-            encoded_password = input("Enter an encoded password to decode: ")
-            if len(encoded_password) == 8 and encoded_password.isdigit():
-                decoded = decode_password(encoded_password)
-                print("Decoded password:", decoded)
+        elif option == '2':
+            if last_encoded_password:
+                original_password = decode_password(last_encoded_password)
+                print(f"The encoded password is {last_encoded_password}, and the original password is {original_password}.")
             else:
-                print("Invalid input. Please enter exactly 8 digits.")
+                print("No password has been encoded yet. Please encode a password first.")
 
-        elif choice == '3':
+        elif option == '3':
             print("Exiting program...")
             break
 
