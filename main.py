@@ -1,16 +1,12 @@
+# Yuyang Sun
+# UFID: 38133550
+
 def encode_password(password):
     encoded = ""
     for digit in password:
         new_digit = (int(digit) + 3) % 10
         encoded += str(new_digit)
     return encoded
-
-def decode_password(encoded_password):
-    decoded = ""
-    for digit in encoded_password:
-        new_digit = (int(digit) - 3) % 10
-        decoded += str(new_digit)
-    return decoded
 
 def main():
     while True:
